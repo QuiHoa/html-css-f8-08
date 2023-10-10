@@ -1,0 +1,115 @@
+@use "sass:math";
+*,
+::after,
+::before {
+   box-sizing: border-box;
+}
+$column-size: 12;
+$gutter: 30px;
+:root {
+   --gutter-x: #{$gutter};
+   --gutter-y: 0;
+}
+$grid-breakpoints: (
+   xs: 0,
+   sm: 576px,
+   md: 768px,
+   lg: 992px,
+   xl: 1200px,
+   xxl: 1400px,
+);
+$container-max-widths: (
+   sm: 540px,
+   md: 720px,
+   lg: 960px,
+   xl: 1140px,
+   xxl: 1340px,
+);
+$gutters: (
+   0: 0,
+   1: 0.25,
+   2: 0.5,
+   3: 1,
+   4: 1.5,
+   5: 3,
+);
+
+.container-fluid {
+   width: 100%;
+   margin-left: auto;
+   margin-right: auto;
+}
+.container {
+   @extend .container-fluid;
+}
+.row {
+   display: flex;
+   flex-wrap: wrap;
+   margin-top: calc(var(--gutter-y) * -1);
+   margin-left: calc(var(--gutter-x) * 0.5 * -1);
+   margin-right: calc(var(--gutter-x) * 0.5 * -1);
+   > * {
+      margin-top: var(--gutter-y);
+      padding-left: calc(var(--gutter-x) * 0.5);
+      padding-right: calc(var(--gutter-x) * 0.5);
+   }
+}
+.col {
+   flex: 1 0 auto;
+}
+@mixin media-query($dimension, $not-displayed: null) {
+   @if $not-displayed {
+      @content;
+   } @else {
+      @media screen and (min-width: $dimension) {
+         @content;
+      }
+   }
+}
+@mixin row-col($break-points) {
+   @for $i from 1 through $column-size * 0.5 {
+      .row-col#{$break-points}-#{$i} > * {
+         flex: 0 0 auto;
+         width: math.div(100%, $i);
+      }
+   }
+}
+@mixin col($break-points) {
+   @for $i from 1 through $column-size {
+      .col#{$break-points}-#{$i} {
+         flex: 0 0 auto;
+         width: math.div(100%, 12) * $i;
+      }
+   }
+}
+@mixin offset($break-points) {
+   @for $i from 0 to $column-size {
+      .offset#{$break-points}-#{$i} {
+         margin-left: if($i==0, 0, math.div(100%, 12) * $i);
+      }
+   }
+}
+@mixin gutter($break-points) {
+   @each $key, $ratio in $gutters {
+      .g#{$break-points}-#{$key},
+      .g-x#{$break-points}-#{$key} {
+         --gutter-x: #{$gutter * $ratio};
+      }
+      .g#{$break-points}-#{$key},
+      .g-y#{$break-points}-#{$key} {
+         --gutter-y: #{$gutter * $ratio};
+      }
+   }
+}
+@each $infix, $dimension in $grid-breakpoints {
+   $break-points: if($infix==xs, "", "-#{$infix}");
+   @include media-query($dimension, $infix==xs) {
+      .container {
+         max-width: map-get($container-max-widths, $infix);
+      }
+      @include row-col($break-points);
+      @include col($break-points);
+      @include offset($break-points);
+      @include gutter($break-points);
+   }
+}

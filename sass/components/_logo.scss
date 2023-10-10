@@ -1,0 +1,35 @@
+@use "../abstract";
+.main-logo {
+   display: flex;
+   align-items: center;
+   gap: 0px 14px;
+   @include abstract.break-points(sm) {
+      & {
+         margin-left: 39px;
+         margin-right: 39px;
+      }
+   }
+}
+.main-logo__icon {
+   .logo__icon {
+      @include abstract.break-points(sm) {
+         & {
+            width: 24px;
+         }
+      }
+   }
+}
+.main-logo__text {
+   a {
+      color: var(--text-color);
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 3.2rem;
+      @include abstract.break-points(sm) {
+         & {
+            font-size: 1.8rem;
+            line-height: 1.44444;
+         }
+      }
+   }
+}

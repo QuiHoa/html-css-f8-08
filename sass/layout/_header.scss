@@ -1,0 +1,201 @@
+@use "../abstract";
+.show-on-moblie {
+   display: none;
+}
+@include abstract.break-points(md) {
+   .show-on-moblie {
+      display: block;
+   }
+}
+.header {
+   padding: 30px 0px;
+   background: var(--header-bg-color);
+   @include abstract.break-points(md) {
+      & {
+         padding: 36px;
+         background: var(--clients-bg-color);
+      }
+   }
+}
+%flexCenter {
+   display: flex;
+   align-items: center;
+}
+.top-bar {
+   @extend %flexCenter;
+   @include abstract.break-points(md) {
+      & {
+         justify-content: space-between;
+      }
+   }
+}
+.main-menu {
+   display: flex;
+   margin-left: 129px;
+   @include abstract.break-points(md) {
+      & {
+         display: none;
+      }
+   }
+   @include abstract.break-points(xl) {
+      & {
+         margin-left: 80px;
+      }
+   }
+   a {
+      @extend %flexCenter;
+      gap: 0px 6px;
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: 2.2rem;
+      padding: 8px 15px;
+   }
+}
+%clients-block-common {
+   @extend %flexCenter;
+   justify-content: center;
+   border-radius: 8px;
+}
+%clients-bg-and-shadow {
+   background: var(--clients-bg-color);
+   box-shadow: var(--clients-shadow);
+}
+.clients {
+   margin-left: auto;
+   @extend %flexCenter;
+   gap: 0px 20px;
+   @include abstract.break-points(md) {
+      & {
+         margin-left: 0px;
+      }
+   }
+   &__search {
+      @extend %clients-block-common;
+      @extend %clients-bg-and-shadow;
+      padding: 14.5px;
+      @include abstract.break-points(md) {
+         display: none;
+      }
+      @include abstract.break-points(lg) {
+         display: none;
+      }
+   }
+   &__interact {
+      display: flex;
+      gap: 0px 20px;
+      @extend %clients-bg-and-shadow;
+      padding: 10px 23px;
+      border-radius: 8px;
+      @include abstract.break-points(md) {
+         display: none;
+      }
+      @include abstract.break-points(lg) {
+         display: none;
+      }
+   }
+   &__avatar {
+      @extend %clients-block-common;
+      height: 50px;
+      img {
+         max-width: 100%;
+         max-height: 100%;
+         object-fit: cover;
+         border-radius: 8px;
+      }
+   }
+}
+.interact__title {
+   font-size: 1.5rem;
+   font-weight: 500;
+   line-height: 2.2rem;
+}
+
+.interact__like,
+.interact__shopping {
+   @extend %flexCenter;
+   gap: 0px 10px;
+}
+.interact__divide {
+   width: 1px;
+   height: 30px;
+   background: #ededf6;
+}
+@include abstract.break-points(md) {
+   .bars {
+      order: -1;
+      margin-top: -6px;
+   }
+   .icon-bars {
+      flex: 1 0 auto;
+      margin-top: 6px;
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--text-color);
+      border: 2px solid var(--text-color);
+      border-radius: 2px;
+   }
+   .icon-bars:last-of-type {
+      width: 10px;
+      height: 1px;
+   }
+   .menu-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s, visibility 0.25s;
+   }
+   .nav-bar-mobile {
+      padding: 20px;
+      position: fixed;
+      z-index: 99999;
+      inset: 0 10% 0 0;
+      background: var(--clients-bg-color);
+      transform: translateX(-100%);
+      transition: transform 0.25s;
+      ul.main-menu {
+         margin-top: 10px;
+      }
+      .clients {
+         margin-top: 20px;
+         margin-bottom: 21px;
+         display: block;
+      }
+      .clients__interact {
+         box-shadow: none;
+      }
+      ul.main-menu,
+      .clients__interact {
+         display: flex;
+         flex-direction: column;
+         margin-left: 0px;
+         gap: 21px 0px;
+      }
+      .clients__interact,
+      ul.main-menu a {
+         padding: 0px;
+      }
+      .interact__name {
+         color: var(--text-color);
+         font-size: 1.5rem;
+         font-weight: 500;
+         line-height: 1.46667;
+      }
+      .interact__title {
+         margin-left: auto;
+      }
+   }
+   .check-bars {
+      display: none;
+   }
+   .check-bars:checked ~ label.menu-overlay {
+      opacity: 1;
+      visibility: visible;
+   }
+   .check-bars:checked ~ .nav-bar-mobile {
+      transform: translateX(0);
+   }
+}
