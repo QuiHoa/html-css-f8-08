@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html,
 body,
 div,
@@ -1212,6 +1213,10 @@ select {
   filter: var(--icon-color);
 }
 
+.no-wrap {
+  white-space: nowrap;
+}
+
 :root {
   --text-color: #1a162e;
   --icon-color: brightness(0) saturate(100%) invert(9%) sepia(9%)
@@ -1219,6 +1224,10 @@ select {
   --clients-bg-color: #fff;
   --header-bg-color: #eeeeee;
   --clients-shadow: 0px 20px 60px 10px rgba(237, 237, 246, 0.2);
+  --mega-menu-shadow: rgba(200, 200, 200, 0.4);
+  --mega-menu-divide-bg-color: #d2d1d6;
+  --color-icon-mega-menu: #1a162e;
+  stroke: var();
 }
 
 html.dark {
@@ -1228,8 +1237,12 @@ html.dark {
   --clients-bg-color: #292e39;
   --header-bg-color: #171c28;
   --clients-shadow: 0px 20px 60px 10px rgba(0, 0, 0, 0.2);
+  --mega-menu-shadow: rgba(23, 28, 40, 0.4);
+  --mega-menu-divide-bg-color: #171c28;
+  --color-icon-mega-menu: #f8f8fb;
 }
 
+/* show mobile */
 .show-on-moblie {
   display: none;
 }
@@ -1239,6 +1252,7 @@ html.dark {
     display: block;
   }
 }
+/*===========Header=================*/
 .header {
   padding: 30px 0px;
   background: var(--header-bg-color);
@@ -1250,21 +1264,27 @@ html.dark {
   }
 }
 
-.interact__like,
-.interact__shopping, .clients, .clients__avatar, .clients__search, .main-menu a, .top-bar {
+.interact__like, .interact__shopping, .clients, .clients__avatar, .clients__search, .main-menu > li > a, .top-bar {
   display: flex;
   align-items: center;
 }
 
+/*-------------Top-bar--------------*/
+.top-bar {
+  position: relative;
+}
 @media screen and (max-width: 767.98px) {
   .top-bar {
     justify-content: space-between;
   }
 }
 
+/* Main menu*/
 .main-menu {
   display: flex;
   margin-left: 129px;
+  /* Mega hover*/
+  /* thẻ a trực tiếp */
 }
 @media screen and (max-width: 767.98px) {
   .main-menu {
@@ -1276,12 +1296,16 @@ html.dark {
     margin-left: 80px;
   }
 }
-.main-menu a {
+.main-menu li:hover .mega {
+  opacity: 1;
+  visibility: visible;
+}
+.main-menu > li > a {
   gap: 0px 6px;
   font-size: 1.5rem;
   font-weight: 500;
   line-height: 2.2rem;
-  padding: 8px 15px;
+  padding: 14px 15px;
 }
 
 .clients__avatar, .clients__search {
@@ -1294,9 +1318,13 @@ html.dark {
   box-shadow: var(--clients-shadow);
 }
 
+/*Clients*/
 .clients {
   margin-left: auto;
   gap: 0px 20px;
+  /*Search*/
+  /*Interact*/
+  /*Avatar user*/
 }
 @media screen and (max-width: 767.98px) {
   .clients {
@@ -1347,12 +1375,9 @@ html.dark {
   font-weight: 500;
   line-height: 2.2rem;
 }
-
-.interact__like,
-.interact__shopping {
+.interact__like, .interact__shopping {
   gap: 0px 10px;
 }
-
 .interact__divide {
   width: 1px;
   height: 30px;
@@ -1360,6 +1385,7 @@ html.dark {
 }
 
 @media screen and (max-width: 767.98px) {
+  /*Bars*/
   .bars {
     order: -1;
     margin-top: -6px;
@@ -1378,6 +1404,7 @@ html.dark {
     width: 10px;
     height: 1px;
   }
+  /* Menu overlay*/
   .menu-overlay {
     position: fixed;
     inset: 0;
@@ -1387,6 +1414,7 @@ html.dark {
     visibility: hidden;
     transition: opacity 0.25s, visibility 0.25s;
   }
+  /* Nav-bar tren mobile*/
   .nav-bar-mobile {
     padding: 20px;
     position: fixed;
@@ -1395,6 +1423,8 @@ html.dark {
     background: var(--clients-bg-color);
     transform: translateX(-100%);
     transition: transform 0.25s;
+    /* Menu*/
+    /* Clients*/
   }
   .nav-bar-mobile ul.main-menu {
     margin-top: 10px;
@@ -1467,6 +1497,140 @@ html.dark {
     font-size: 1.8rem;
     line-height: 1.44444;
   }
+}
+
+.mega-menu__block-title-icon {
+  display: flex;
+}
+
+.mega {
+  width: min(1240px, 100%);
+  position: absolute;
+  left: 0px;
+  top: 50px;
+  padding-top: 54px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s, visibility 0.25s;
+}
+
+.mega__inner {
+  position: relative;
+  padding: 30px;
+  padding-right: 62px;
+  background: var(--clients-bg-color);
+  box-shadow: 0px 40px 90px 20px var(--mega-menu-shadow);
+  border-radius: 20px;
+}
+
+.mega-menu {
+  --mega-menu-width: 268px;
+  --mega-menu-padding-right: 30px;
+  width: min(var(--mega-menu-width), 100%);
+  border-right: 2px solid var(--mega-menu-divide-bg-color);
+}
+.mega-menu > li.list-title {
+  margin-top: -30px;
+}
+.mega-menu > li {
+  padding-right: var(--mega-menu-padding-right);
+}
+.mega-menu__block-title-icon {
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+.mega-menu__title > a {
+  padding-left: 14px;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.mega-menu__link {
+  margin-left: 50px;
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.42857;
+  transition: color 0.25s;
+  text-align: left;
+}
+.mega-menu__link + .mega-menu__link, .mega-menu > li:not(.list-title) + li {
+  margin-top: 14px;
+}
+.mega-menu__link::before {
+  content: attr(title);
+  height: 0;
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  font-weight: 500;
+}
+.mega-menu__link:hover {
+  color: #0071dc;
+  font-weight: 500;
+}
+
+.main-menu > li:first-of-type .mega-menu > li:hover > .mega-menu__link {
+  color: #0071dc;
+  font-weight: 500;
+}
+
+li.Electronics:hover .sub-mega-menu {
+  display: grid;
+}
+
+.sub-mega-menu {
+  display: none;
+  justify-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  position: absolute;
+  inset: var(--mega-menu-padding-right) 0 0 calc(var(--mega-menu-width));
+  padding-left: var(--mega-menu-padding-right);
+}
+.sub-mega-menu > li {
+  margin-top: -30px;
+}
+
+.mega-3 .mega__inner::before, .mega-2 .mega__inner::before, .mega__inner::before {
+  position: absolute;
+  top: -10px;
+  content: "";
+  display: block;
+  width: 23px;
+  height: 23px;
+  background: var(--clients-bg-color);
+  border-radius: 5px;
+  rotate: 45deg;
+}
+
+.mega__inner::before {
+  left: 375px;
+}
+
+.mega-3 .mega-menu, .mega-2 .mega-menu {
+  width: 100%;
+  display: grid;
+  grid-template: 1fr auto/repeat(4, 1fr);
+  border: none;
+  padding: 0px;
+}
+.mega-3 .mega-menu > li, .mega-2 .mega-menu > li, .mega-3 .mega-menu > li + li, .mega-2 .mega-menu > li + li {
+  margin-top: -30px;
+}
+.mega-3 .mega-menu__block-title-icon, .mega-2 .mega-menu__block-title-icon {
+  margin-top: 30px;
+}
+
+.mega-2 .mega__inner::before {
+  left: 485px;
+}
+
+.mega-3 .mega-menu {
+  gap: 0px 77px;
+}
+.mega-3 .mega__inner::before {
+  left: 580px;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,4 +1,5 @@
 @use "../abstract";
+/* show mobile */
 .show-on-moblie {
    display: none;
 }
@@ -7,6 +8,7 @@
       display: block;
    }
 }
+/*===========Header=================*/
 .header {
    padding: 30px 0px;
    background: var(--header-bg-color);
@@ -21,7 +23,9 @@
    display: flex;
    align-items: center;
 }
+/*-------------Top-bar--------------*/
 .top-bar {
+   position: relative;
    @extend %flexCenter;
    @include abstract.break-points(md) {
       & {
@@ -29,6 +33,7 @@
       }
    }
 }
+/* Main menu*/
 .main-menu {
    display: flex;
    margin-left: 129px;
@@ -42,13 +47,19 @@
          margin-left: 80px;
       }
    }
-   a {
+   /* Mega hover*/
+   & li:hover .mega {
+      opacity: 1;
+      visibility: visible;
+   }
+   /* thẻ a trực tiếp */
+   & > li > a {
       @extend %flexCenter;
       gap: 0px 6px;
       font-size: 1.5rem;
       font-weight: 500;
       line-height: 2.2rem;
-      padding: 8px 15px;
+      padding: 14px 15px;
    }
 }
 %clients-block-common {
@@ -60,6 +71,7 @@
    background: var(--clients-bg-color);
    box-shadow: var(--clients-shadow);
 }
+/*Clients*/
 .clients {
    margin-left: auto;
    @extend %flexCenter;
@@ -69,6 +81,7 @@
          margin-left: 0px;
       }
    }
+   /*Search*/
    &__search {
       @extend %clients-block-common;
       @extend %clients-bg-and-shadow;
@@ -80,6 +93,7 @@
          display: none;
       }
    }
+   /*Interact*/
    &__interact {
       display: flex;
       gap: 0px 20px;
@@ -93,6 +107,7 @@
          display: none;
       }
    }
+   /*Avatar user*/
    &__avatar {
       @extend %clients-block-common;
       height: 50px;
@@ -104,23 +119,27 @@
       }
    }
 }
-.interact__title {
-   font-size: 1.5rem;
-   font-weight: 500;
-   line-height: 2.2rem;
+.interact {
+   &__title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: 2.2rem;
+   }
+
+   &__like,
+   &__shopping {
+      @extend %flexCenter;
+      gap: 0px 10px;
+   }
+   &__divide {
+      width: 1px;
+      height: 30px;
+      background: #ededf6;
+   }
 }
 
-.interact__like,
-.interact__shopping {
-   @extend %flexCenter;
-   gap: 0px 10px;
-}
-.interact__divide {
-   width: 1px;
-   height: 30px;
-   background: #ededf6;
-}
 @include abstract.break-points(md) {
+   /*Bars*/
    .bars {
       order: -1;
       margin-top: -6px;
@@ -139,6 +158,7 @@
       width: 10px;
       height: 1px;
    }
+   /* Menu overlay*/
    .menu-overlay {
       position: fixed;
       inset: 0;
@@ -148,6 +168,7 @@
       visibility: hidden;
       transition: opacity 0.25s, visibility 0.25s;
    }
+   /* Nav-bar tren mobile*/
    .nav-bar-mobile {
       padding: 20px;
       position: fixed;
@@ -156,16 +177,18 @@
       background: var(--clients-bg-color);
       transform: translateX(-100%);
       transition: transform 0.25s;
+      /* Menu*/
       ul.main-menu {
          margin-top: 10px;
       }
+      /* Clients*/
       .clients {
          margin-top: 20px;
          margin-bottom: 21px;
          display: block;
-      }
-      .clients__interact {
-         box-shadow: none;
+         &__interact {
+            box-shadow: none;
+         }
       }
       ul.main-menu,
       .clients__interact {
@@ -178,24 +201,26 @@
       ul.main-menu a {
          padding: 0px;
       }
-      .interact__name {
-         color: var(--text-color);
-         font-size: 1.5rem;
-         font-weight: 500;
-         line-height: 1.46667;
-      }
-      .interact__title {
-         margin-left: auto;
+      .interact {
+         &__name {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            font-weight: 500;
+            line-height: 1.46667;
+         }
+         &__title {
+            margin-left: auto;
+         }
       }
    }
    .check-bars {
       display: none;
-   }
-   .check-bars:checked ~ label.menu-overlay {
-      opacity: 1;
-      visibility: visible;
-   }
-   .check-bars:checked ~ .nav-bar-mobile {
-      transform: translateX(0);
+      &:checked ~ label.menu-overlay {
+         opacity: 1;
+         visibility: visible;
+      }
+      &:checked ~ .nav-bar-mobile {
+         transform: translateX(0);
+      }
    }
 }
