@@ -112,6 +112,11 @@ li.Electronics:hover .sub-mega-menu {
    & > li {
       margin-top: -30px;
    }
+   @include abstract.break-points(xl) {
+      grid-template-columns: 1fr 1fr;
+      overflow-y: auto;
+      gap: 30px 0px;
+   }
    @include abstract.break-points(md) {
       position: static;
       grid-template-columns: 1fr;
@@ -131,6 +136,12 @@ li.Electronics:hover .sub-mega-menu {
       grid-template-columns: 1fr;
       overflow-y: auto;
    }
+   .Cell-phone {
+      transform: translateY(-55px);
+      @include abstract.break-points(lg) {
+         transform: translateY(-10px);
+      }
+   }
 }
 %before-mega-menu {
    position: absolute;
@@ -148,6 +159,9 @@ li.Electronics:hover .sub-mega-menu {
    left: 375px;
    @include abstract.break-points(md) {
       content: none;
+   }
+   @include abstract.break-points(xl) {
+      left: 314px;
    }
 }
 %common-mega-2and3-grid {
@@ -184,21 +198,37 @@ li.Electronics:hover .sub-mega-menu {
 }
 .mega-2 {
    @extend %common-mega-2and3-grid;
+   .mega-menu {
+      @include abstract.break-points(lg) {
+         grid-template-columns: repeat(3, 1fr);
+         gap: 20px 0px;
+      }
+   }
    .mega__inner::before {
       @extend %before-mega-menu;
       left: 485px;
+      @include abstract.break-points(xl) {
+         left: 430px;
+      }
    }
 }
 .mega-3 {
    @extend %common-mega-2and3-grid;
    .mega-menu {
       gap: 0px 77px;
-      @include abstract.break-points(md) {
-         gap: 30px 0px;
+      @include abstract.break-points(xl) {
+         grid-template-columns: repeat(2, 1fr);
+         gap: 20px 0px;
       }
+   }
+   @include abstract.break-points(md) {
+      gap: 30px 0px;
    }
    .mega__inner::before {
       @extend %before-mega-menu;
       left: 580px;
+      @include abstract.break-points(xl) {
+         left: 535px;
+      }
    }
 }
