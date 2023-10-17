@@ -1,15 +1,26 @@
+@use "../abstract";
 %flexCenter {
    display: flex;
 }
 .mega {
    width: min(1240px, 100%);
    position: absolute;
+   z-index: 999;
    left: 0px;
    top: 50px;
    padding-top: 54px;
    opacity: 0;
    visibility: hidden;
    transition: opacity 0.25s, visibility 0.25s;
+   @include abstract.break-points(md) {
+      display: none;
+      opacity: 1;
+      visibility: visible;
+      position: static;
+      padding-top: 0px;
+      height: calc(100vh - 364px);
+      overflow-y: auto;
+   }
 }
 .mega__inner {
    position: relative;
@@ -18,12 +29,20 @@
    background: var(--clients-bg-color);
    box-shadow: 0px 40px 90px 20px var(--mega-menu-shadow);
    border-radius: 20px;
+   @include abstract.break-points(md) {
+      box-shadow: none;
+      padding: 0;
+      margin-top: 20px;
+   }
 }
 .mega-menu {
    --mega-menu-width: 268px;
    --mega-menu-padding-right: 30px;
    width: min(var(--mega-menu-width), 100%);
    border-right: 2px solid var(--mega-menu-divide-bg-color);
+   @include abstract.break-points(md) {
+      border-right: none;
+   }
    & > li.list-title {
       margin-top: -30px;
    }
@@ -35,6 +54,9 @@
       align-items: center;
       margin-bottom: 20px;
       margin-top: 30px;
+      @include abstract.break-points(md) {
+         gap: 0px 14px;
+      }
    }
    &__title > a {
       padding-left: 14px;
@@ -50,6 +72,9 @@
       line-height: 1.42857;
       transition: color 0.25s;
       text-align: left;
+      @include abstract.break-points(sm) {
+         margin-left: 0px;
+      }
    }
    &__link + &__link,
    & > li:not(.list-title) + li {
@@ -87,6 +112,25 @@ li.Electronics:hover .sub-mega-menu {
    & > li {
       margin-top: -30px;
    }
+   @include abstract.break-points(md) {
+      position: static;
+      grid-template-columns: 1fr;
+      padding-left: 0px;
+      justify-items: flex-start;
+      margin-top: 14px;
+      & {
+         .mega-menu__block-title-icon {
+            gap: 0px 14px;
+         }
+         .mega-menu__link {
+            margin-left: 50px;
+         }
+      }
+   }
+   @include abstract.break-points(lg) {
+      grid-template-columns: 1fr;
+      overflow-y: auto;
+   }
 }
 %before-mega-menu {
    position: absolute;
@@ -102,12 +146,28 @@ li.Electronics:hover .sub-mega-menu {
 .mega__inner::before {
    @extend %before-mega-menu;
    left: 375px;
+   @include abstract.break-points(md) {
+      content: none;
+   }
 }
 %common-mega-2and3-grid {
+   .mega__inner {
+      @include abstract.break-points(md) {
+         position: static;
+      }
+   }
    .mega-menu {
       width: 100%;
       display: grid;
       grid-template: 1fr auto/ repeat(4, 1fr);
+      @include abstract.break-points(md) {
+         row-gap: 30px;
+         grid-template-columns: 1fr;
+         grid-template-rows: none;
+         & .mega-menu__link {
+            margin-left: 50px;
+         }
+      }
       border: none;
       padding: 0px;
       & > li,
@@ -116,6 +176,9 @@ li.Electronics:hover .sub-mega-menu {
       }
       &__block-title-icon {
          margin-top: 30px;
+         @include abstract.break-points(md) {
+            column-gap: 14px;
+         }
       }
    }
 }
@@ -130,6 +193,9 @@ li.Electronics:hover .sub-mega-menu {
    @extend %common-mega-2and3-grid;
    .mega-menu {
       gap: 0px 77px;
+      @include abstract.break-points(md) {
+         gap: 30px 0px;
+      }
    }
    .mega__inner::before {
       @extend %before-mega-menu;

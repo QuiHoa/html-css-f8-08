@@ -37,20 +37,19 @@
 .main-menu {
    display: flex;
    margin-left: 129px;
-   @include abstract.break-points(md) {
-      & {
-         display: none;
-      }
-   }
    @include abstract.break-points(xl) {
       & {
          margin-left: 80px;
       }
    }
+
    /* Mega hover*/
    & li:hover .mega {
       opacity: 1;
       visibility: visible;
+      @include abstract.break-points(md) {
+         display: block;
+      }
    }
    /* thẻ a trực tiếp */
    & > li > a {
@@ -86,12 +85,6 @@
       @extend %clients-block-common;
       @extend %clients-bg-and-shadow;
       padding: 14.5px;
-      @include abstract.break-points(md) {
-         display: none;
-      }
-      @include abstract.break-points(lg) {
-         display: none;
-      }
    }
    /*Interact*/
    &__interact {
@@ -100,12 +93,6 @@
       @extend %clients-bg-and-shadow;
       padding: 10px 23px;
       border-radius: 8px;
-      @include abstract.break-points(md) {
-         display: none;
-      }
-      @include abstract.break-points(lg) {
-         display: none;
-      }
    }
    /*Avatar user*/
    &__avatar {
