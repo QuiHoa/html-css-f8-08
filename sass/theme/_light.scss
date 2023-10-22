@@ -1,3 +1,4 @@
+@use "../abstract";
 :root {
    --text-color: #1a162e;
    --icon-color: brightness(0) saturate(100%) invert(9%) sepia(9%)
@@ -19,9 +20,24 @@
       saturate(7493%) hue-rotate(54deg) brightness(94%) contrast(100%);
    --btn-footer-bg-color: #77dae6;
    --btn-footer-color: #fff;
+   --product-page-bg-color: #fff;
+   @include abstract.break-points(md) {
+      --product-page-bg-color: #fafafd;
+   }
    --path-bg-color: #f6f6f6;
+   @include abstract.break-points(md) {
+      --path-bg-color: #fff;
+   }
+   --pic-product-page-bg-color: #fff;
    --path-shadow: rgba(237, 237, 246, 0.2);
    --select-action-border-color: #d2d1d6;
    --btn-action-choice-fast-bg-color: #ededf6;
    --user-reviews-bg-color: #fafafd;
+   @include abstract.break-points(md) {
+      --user-reviews-bg-color: #ffff;
+   }
+   --product-card-bg-color: #fff;
+   --product-card-shadow: rgba(200, 200, 200, 0.4);
+   --product-card-color: #1a162e;
+   --product-card-divide-bg-color: #d2d1d6;
 }

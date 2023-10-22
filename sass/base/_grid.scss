@@ -55,7 +55,7 @@ $gutters: (
    }
 }
 .col {
-   flex: 1 0;
+   flex: 0 0;
 }
 @mixin media-query($dimension, $not-displayed: null) {
    @if $not-displayed {

@@ -1,0 +1,271 @@
+@use "../abstract";
+%flexCenter {
+   display: flex;
+   align-items: center;
+}
+.card {
+   padding: 30px 0px 40px;
+   background: var(--home-page-bg-color);
+   @include abstract.break-points(md) {
+      padding-left: 20px;
+      padding-right: 20px;
+   }
+   .box {
+      @include abstract.break-points(lg) {
+         display: flex;
+         gap: 30px;
+      }
+      @include abstract.break-points(md) {
+         display: block;
+      }
+   }
+   .path {
+      background: var(--clients-bg-color);
+      box-shadow: 0px 20px 60px 10px var(--clients-shadow);
+   }
+   &__media {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      padding: 30px;
+      background: var(--clients-bg-color);
+      box-shadow: 0px 20px 60px 10px var(--clients-shadow);
+      border-radius: 20px;
+   }
+   &__product {
+      padding-bottom: 30px;
+      @extend %flexCenter;
+      gap: 30px;
+      border-bottom: 1px solid #d2d1d6;
+   }
+   .block {
+      @extend %flexCenter;
+      flex-wrap: wrap;
+      @include abstract.break-points(xl) {
+         row-gap: 20px;
+      }
+   }
+   &__desc {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+   }
+   %style-title {
+      font-size: 1.8rem;
+      font-weight: 500;
+      line-height: 1.44444;
+   }
+   &__title {
+      width: min(374px, 100%);
+      @extend %style-title;
+      @include abstract.break-points(md) {
+         font-size: 1.4rem !important;
+         line-height: 1.42857 !important;
+      }
+   }
+   &__price {
+      display: block;
+      margin-left: auto;
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1.45455;
+      @include abstract.break-points(xl) {
+         margin-left: 0;
+      }
+      @include abstract.break-points(sm) {
+         order: 1;
+      }
+   }
+   &__price-2 {
+      margin-right: 10px;
+      border-right: 3px solid #9e9da8;
+      padding-right: 10px;
+      color: #9e9da8;
+      @extend %style-title;
+   }
+   &__stock {
+      color: #67b044;
+      @extend %style-title;
+   }
+   &__brand,
+   &__number {
+      @extend %flexCenter;
+      gap: 10px;
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: 1.46667;
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: 1px solid var(--secondary-color-secondary-3, #d2d1d6);
+   }
+   &__brand {
+      margin-right: 20px;
+   }
+   &__like {
+      margin-left: auto;
+      margin-right: 30px;
+      @include abstract.break-points(xl) {
+         margin-left: 0;
+      }
+      @include abstract.break-points(lg) {
+         margin-left: auto;
+         margin-right: 15px;
+      }
+      @include abstract.break-points(lg) {
+         margin-left: 0;
+         margin-right: 15px;
+      }
+   }
+   &__like,
+   &__delete {
+      @extend %flexCenter;
+      gap: 10px;
+   }
+   .text-heart,
+   .text-delete {
+      color: #9e9da8;
+      font-size: 1.6rem;
+      font-weight: 500;
+      line-height: 1.5;
+   }
+   &__check-out {
+      border-radius: 20px;
+      padding: 30px;
+      background: var(--clients-bg-color);
+      box-shadow: 0px 20px 60px 10px var(--clients-shadow);
+      .box {
+         display: flex;
+         flex-direction: column;
+         gap: 14px;
+      }
+   }
+   &__gift {
+      @extend %flexCenter;
+      gap: 20px;
+      @extend .card__check-out;
+      margin-top: 30px;
+      @include abstract.break-points(xl) {
+         flex-direction: column;
+      }
+   }
+   .come-back {
+      @extend %flexCenter;
+      gap: 10px;
+      font-size: 1.8rem;
+      font-weight: 500;
+      line-height: 1.44444;
+   }
+   .total-money {
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: none;
+      @include abstract.break-points(md) {
+         display: none;
+      }
+      .price-detail {
+         @extend %flexCenter;
+         justify-content: space-between;
+      }
+      .text,
+      .price {
+         font-size: 1.8rem;
+         font-weight: 500;
+         line-height: 1.44444;
+      }
+      .total {
+         margin-top: 30px;
+         border-top: 1px solid #d2d1d6;
+         padding-top: 30px;
+      }
+      .total > * {
+         font-size: 2.2rem;
+         font-weight: 700;
+         line-height: 1.45455;
+      }
+   }
+   .total-price {
+      width: 35%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+   }
+   .check-out {
+      &__price-detail {
+         &.total {
+            border-top: 1px solid #d2d1d6;
+            padding-top: 14px;
+         }
+         @extend %flexCenter;
+         justify-content: space-between;
+         %style-text-common {
+            font-size: 1.6rem;
+            line-height: 1.5;
+         }
+         .text {
+            @extend %style-text-common;
+            font-weight: 500;
+         }
+         .text-2 {
+            @extend %style-text-common;
+            font-weight: 400;
+         }
+         .price {
+            @extend %style-text-common;
+            font-weight: 700;
+         }
+      }
+      &__btn {
+         width: 100%;
+         margin-top: 30px;
+         padding: 18px;
+         border-radius: 50px;
+         background: #ffb700;
+         font-size: 2.2rem;
+         font-weight: 500;
+         line-height: 1.45455;
+         text-align: center;
+         @include abstract.break-points(xl) {
+            font-size: 1.9rem;
+         }
+      }
+   }
+   .gift {
+      &__pic {
+         @extend %flexCenter;
+         flex-shrink: 0;
+         justify-content: center;
+         width: 76px;
+         height: 76px;
+         border-radius: 1.4rem;
+         background: linear-gradient(
+               0deg,
+               rgba(255, 255, 255, 0.9) 0%,
+               rgba(255, 255, 255, 0.9) 100%
+            ),
+            #7644e1;
+         box-shadow: 0px 20px 60px 10px rgba(237, 237, 246, 0.2);
+      }
+      &__content {
+         @include abstract.break-points(xl) {
+            text-align: center;
+         }
+      }
+      &__title {
+         font-size: 1.8rem;
+         font-weight: 500;
+         line-height: 1.44444;
+      }
+      &__desc {
+         margin-top: 10px;
+         width: min(235px, 100%);
+         font-size: 1.4rem;
+         font-weight: 400;
+         line-height: 1.42857;
+         @include abstract.break-points(lg) {
+            margin-left: auto;
+            margin-right: auto;
+         }
+      }
+   }
+}

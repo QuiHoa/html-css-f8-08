@@ -39,8 +39,19 @@
          </script>
          <main class="product-page">
             <div class="container">
-               <div class="product-page__path">
-                  <a href="#!" class="product-page__path--link"
+               <label for="search" class="product-page__search">
+                  <input
+                     type="text"
+                     name=""
+                     id="search"
+                     placeholder="Search for item"
+                  />
+                  <span class="icon-search icon">
+                     <img src="./assets/icon/search.svg" alt="" />
+                  </span>
+               </label>
+               <div class="path">
+                  <a href="#!" class="path--link"
                      >Departments
                      <img
                         src="./assets/icon/arrow-right.svg"
@@ -48,7 +59,7 @@
                         class="arrow-right"
                      />
                   </a>
-                  <a href="#!" class="product-page__path--link"
+                  <a href="#!" class="path--link"
                      >Coffee
                      <img
                         src="./assets/icon/arrow-right.svg"
@@ -56,7 +67,7 @@
                         class="arrow-right"
                      />
                   </a>
-                  <a href="#!" class="product-page__path--link"
+                  <a href="#!" class="path--link"
                      >Coffee Beans
                      <img
                         src="./assets/icon/arrow-right.svg"
@@ -64,7 +75,7 @@
                         class="arrow-right"
                      />
                   </a>
-                  <a href="#!" class="product-page__path--link"
+                  <a href="#!" class="path--link"
                      >LavAzza
                      <img
                         src="./assets/icon/arrow-right.svg"
@@ -74,26 +85,44 @@
                   </a>
                </div>
                <div class="product-page__media">
-                  <div class="row row-col-lg-2">
+                  <div class="row row-col-md-2 row-col-1 g-3">
                      <div class="col-lg-5">
                         <div class="block">
                            <figure class="product-page__pic">
-                              <img
-                                 src="./assets/img/product-pic-1.png"
-                                 alt="Coffee Beans - Espresso Arabica and Robusta Beans"
-                              />
+                              <picture>
+                                 <source
+                                    media="(max-width:1199.98px )"
+                                    srcset="./assets/img/product-pic-1-xl.png"
+                                 />
+                                 <img
+                                    src="./assets/img/product-pic-1.png"
+                                    alt="Coffee Beans - Espresso Arabica and Robusta Beans"
+                                 />
+                              </picture>
                            </figure>
                            <figure class="product-page__pic">
-                              <img
-                                 src="./assets/img/product-pic-1.png"
-                                 alt="Coffee Beans - Espresso Arabica and Robusta Beans"
-                              />
+                              <picture>
+                                 <source
+                                    media="(max-width:1199.98px )"
+                                    srcset="./assets/img/product-pic-1-xl.png"
+                                 />
+                                 <img
+                                    src="./assets/img/product-pic-1.png"
+                                    alt="Coffee Beans - Espresso Arabica and Robusta Beans"
+                                 />
+                              </picture>
                            </figure>
                            <figure class="product-page__pic">
-                              <img
-                                 src="./assets/img/product-pic-1.png"
-                                 alt="Coffee Beans - Espresso Arabica and Robusta Beans"
-                              />
+                              <picture>
+                                 <source
+                                    media="(max-width:1199.98px )"
+                                    srcset="./assets/img/product-pic-1-xl.png"
+                                 />
+                                 <img
+                                    src="./assets/img/product-pic-1.png"
+                                    alt="Coffee Beans - Espresso Arabica and Robusta Beans"
+                                 />
+                              </picture>
                            </figure>
                         </div>
                         <div class="product-page__reviews-item">
@@ -152,6 +181,29 @@
                                     <button class="choice-fast">Medium</button>
                                     <button class="choice-fast">Large</button>
                                  </div>
+                                 <div class="action-media action-media-xl">
+                                    <span class="action-media__price"
+                                       >$500.00</span
+                                    >
+                                    <span class="action-media__percent"
+                                       >10%</span
+                                    >
+                                    <strong class="action-media__price-2">
+                                       $540.00
+                                    </strong>
+                                    <div class="box-media">
+                                       <button class="action-media__btn">
+                                          Add to cart
+                                       </button>
+                                       <span class="block-heart">
+                                          <img
+                                             src="./assets/icon/heart-lavazza.svg"
+                                             alt=""
+                                             class="icon-heart"
+                                          />
+                                       </span>
+                                    </div>
+                                 </div>
                               </div>
                               <div class="product-page__content-action-2">
                                  <div class="action-list">
@@ -166,7 +218,7 @@
                                     <img
                                        src="./assets/icon/cart.svg"
                                        alt=""
-                                       class="list-pic"
+                                       class="action-list__pic"
                                     />
                                     <div class="action-list__content">
                                        <h3 class="action-list__title">
@@ -181,7 +233,7 @@
                                     <img
                                        src="./assets/icon/pickUp.svg"
                                        alt=""
-                                       class="list-pic"
+                                       class="action-list__pic"
                                     />
                                     <div class="list-content">
                                        <h3 class="action-list__title">
@@ -193,16 +245,20 @@
                                     </div>
                                  </div>
                                  <div class="action-media">
-                                    <span class="action-media__price"
-                                       >$500.00</span
-                                    >
-                                    <span class="action-media__percent"
-                                       >10%</span
-                                    >
-                                    <strong class="action-media__price-2">
-                                       $540.00
-                                    </strong>
-                                    <div class="box-media">
+                                    <div class="box-media-price">
+                                       <span class="block-reviews">
+                                          <span class="action-media__price"
+                                             >$500.00</span
+                                          >
+                                          <span class="action-media__percent"
+                                             >10%</span
+                                          >
+                                       </span>
+                                       <strong class="action-media__price-2">
+                                          $540.00
+                                       </strong>
+                                    </div>
+                                    <div class="box-media box-media-sm">
                                        <button class="action-media__btn">
                                           Add to cart
                                        </button>
@@ -239,7 +295,7 @@
                   <h2 class="user-reviews__title">
                      What our customers are saying
                   </h2>
-                  <div class="row row-col-lg-3">
+                  <div class="row row-col-lg-3 row-col-md-2 row-col-1 g-3">
                      <div class="col">
                         <div class="user-reviews user-reviews-1">
                            <div class="block">
